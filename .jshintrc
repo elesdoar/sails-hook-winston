@@ -10,5 +10,6 @@
   "loopfunc": true,
   "boss": true,
   "supernew": true,
-  "laxcomma": true
+  "laxcomma": true,
+  "esversion": 6
 }

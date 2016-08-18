@@ -13,18 +13,15 @@ export default function (sails) {
       let captainsOptions = sails.config.log;
       let consoleOptions = {
         level: sails.config.log.level,
-        formatter: options => {
-          let message = '';
-
-          if (sails.config.log.timestamp) {
-            message = sails.config.log.timestampFormat ? moment().format(sails.config.log.timestampFormat) : moment().format('LLLL');
-            message += ' ';
-          }
-
-          message += options.message || '';
-          message += (options.meta && Object.keys(options.meta).length ? '\n\t' + JSON.stringify(options.meta) : '');
-          return message;
-        }
+        formatter: sails.config.log.formatter || undefined,
+        colorize: sails.config.log.colorize || false,
+        prettyPrint: sails.config.log.prettyPrint || false,
+        timestamp: sails.config.log.timestamp || false,
+        json: sails.config.log.json || false,
+        stringify: sails.config.log.stringify || false,
+        depth: sails.config.log.depth || null,
+        humanReadableUnhandledException: sails.config.log.humanReadableUnhandledException || false,
+        showLevel: sails.config.log.showLevel !== undefined? sails.config.log.showLevel:true
       };
 
       // Console Transport
